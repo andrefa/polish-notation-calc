@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"github.com/DavidHuie/quartz/go/quartz"
 	"github.com/irlndts/go-rpn"
 	"regexp"
@@ -20,13 +21,13 @@ func (r *Resolver) Calc(args CalcArgs, response *CalcResponse) error {
 	*response = CalcResponse{}
 
 	if ok,_ := regexp.MatchString("^[0-9/*-+. ]+$", args.Expression); !ok {
-		panic("Error: invalid expression " + args.Expression + " : ")
+		return errors.New("Error: '" + args.Expression + "' is an invalid expression ")
 	}
 
 	result,err := rpn.Calc(args.Expression)
 
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	response.Result = result
