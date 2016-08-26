@@ -2,9 +2,9 @@
 Simple polish notation calculator integrating python, ruby and go languages.
 
 ## Pre requisites
- - python (2 or 3)
+ - python 2
  - ruby
- - go 
+ - go
  - $GOPATH properly set
 
 ## Installation
