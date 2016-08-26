@@ -1,3 +1,4 @@
+require 'json'
 require 'logger'
 require 'quartz'
 
@@ -39,8 +40,7 @@ def start_slave()
     if cmd == "exit"
       break
     else
-      print execute(cmd),"\n"
-      print "[end]\n"
+      print execute(cmd).to_json() + "\n"
       STDOUT.flush
     end
   end
