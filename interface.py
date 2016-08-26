@@ -1,3 +1,4 @@
+import json
 from subprocess import Popen, PIPE, STDOUT
 
 print 'Launching ruby process...'
@@ -25,24 +26,19 @@ def evaluate_expressions(expressions):
 
 
 def evaluate_expression(expr):
-    print 'Evaluating expression "' + expr + '"..'
     slave.stdin.write(expr + '\n')
     return slave.stdout.readline().rstrip()
 
 
 def show_result(results):
     for result in results:
-        print result
+        result_dict = json.loads(result)
+        print result_dict['result'], result_dict['duration']
 
 
 def main():
-    print 'Reading expressions..'
     expressions = read_expressions()
-
-    print 'Evaluating results..'
     results = evaluate_expressions(expressions)
-
-    print 'Showing results..'
     show_result(results)
 
 

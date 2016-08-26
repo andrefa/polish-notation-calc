@@ -1,5 +1,5 @@
-# Polish notation calculator
-Simple polish notation calculator integrating python, ruby and go languages.
+# Reverse polish notation calculator
+Simple reverse polish notation calculator integrating python, ruby and go languages.
 
 ## Pre requisites
  - python 2
