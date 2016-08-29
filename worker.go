@@ -20,7 +20,7 @@ type CalcResponse struct {
 func (r *Resolver) Calc(args CalcArgs, response *CalcResponse) error {
 	*response = CalcResponse{}
 
-	if ok,_ := regexp.MatchString("^[0-9/*-+. ]+$", args.Expression); !ok {
+	if ok,_ := regexp.MatchString("^[0-9/*+. -]+$", args.Expression); !ok {
 		return errors.New("Error: '" + args.Expression + "' is an invalid expression ")
 	}
 
